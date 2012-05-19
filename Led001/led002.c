@@ -5,16 +5,22 @@ unsigned char led(unsigned char a)
 	return ~a;
 }
 
+void delay(unsigned int count)
+{
+	unsigned int t;
+
+	for(t=0; t<count; t++);
+}
+
 void main(void)
 {
-	unsigned int	t;
-
 	for(;;)
 	{
 		P0 = led(0x43);
-		for (t=0; t<10000; t++);
+		delay(10000);
 		
 		P0 = led(0x00);
-		for (t=0; t<10000; t++);
+		delay(10000);
 	}
 }
+
