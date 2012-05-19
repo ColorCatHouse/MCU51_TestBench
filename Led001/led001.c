@@ -4,6 +4,6 @@ void main(void)
 {
 	for(;;)
 	{
-		P0 = 0x00;
+		P0 = ~0x43;
 	}
 }
