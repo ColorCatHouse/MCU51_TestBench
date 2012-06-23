@@ -12,12 +12,18 @@ void main(void)
 	unsigned char n=0x01;
 	unsigned char a;
 
+	P20=1;
+
 	for(;;)
 	{	
 		for(a=0; a<8; a++)
 		{
+
 			P0=~(n<<a);
-			delay();
+//			delay();
+			for (; P20==0; )
+			{
+			}
 		}	 
 	}
 }
