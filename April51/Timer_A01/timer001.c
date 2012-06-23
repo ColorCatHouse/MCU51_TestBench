@@ -1,4 +1,4 @@
-#include <STC89.H>
+#include <STC89.H>				  
 
 unsigned char pattern;
 
