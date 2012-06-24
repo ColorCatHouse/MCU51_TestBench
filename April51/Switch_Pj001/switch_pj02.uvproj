@@ -348,9 +348,9 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>switch002.c</FileName>
+              <FileName>switch002_03.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\switch002.c</FilePath>
+              <FilePath>.\switch002_03.c</FilePath>
             </File>
           </Files>
         </Group>

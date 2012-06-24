@@ -160,13 +160,13 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>45</ColumnNumber>
+      <ColumnNumber>6</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>52</TopLine>
-      <CurrentLine>54</CurrentLine>
+      <TopLine>7</TopLine>
+      <CurrentLine>27</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\switch002.c</PathWithFileName>
-      <FilenameWithoutPath>switch002.c</FilenameWithoutPath>
+      <PathWithFileName>.\switch002_03.c</PathWithFileName>
+      <FilenameWithoutPath>switch002_03.c</FilenameWithoutPath>
     </File>
   </Group>
 
