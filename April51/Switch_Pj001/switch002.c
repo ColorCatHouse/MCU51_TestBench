@@ -1,7 +1,6 @@
-/***************************************
-****************************************
+/*******************************************************************************
  Title: 	Toogle switch
- Ver:		1.0
+ Ver:		1.1
 
  Date:		2012-06-24
  By:		April
@@ -13,19 +12,32 @@
  				P20 -> Switch S3 (0:On 1:Off)
  *******************************************************************************/
 #include <STC89.H>
- 
-unsigned char button()
+
+void delayKeyBounce(void)
 {
+	unsigned int t;
+
+	for (t=0; t<15000; t++);
+} /* delayKeyBounce */
+
+unsigned char button(void)
+{
+	unsigned char buttonOn;
+
+	buttonOn = 0;
+
 	P20 = 1;			// Prepare the output level to high
 
 	if (P20 == 0)		// Voltage level of P20 is low means button pressed
 	{
-		return 1;
+		delayKeyBounce();
+		if (P20 == 0)
+		{
+			buttonOn = 1;
+		}
 	}
-	else				// Voltage level of P20 is high means button is not pressed				
-	{
-		return 0;
-	}
+	return buttonOn;
+
 } /* button */
 
 unsigned char changeLight(unsigned char s)
@@ -49,23 +61,15 @@ unsigned char changeLight(unsigned char s)
 
 void main(void)
 {
-	unsigned char light;
+	unsigned char	light;
 
 	for (;;)
 	{
-		if ((button() == 0) && (light == 0))
+		if ((light == 0) && (button() == 1))
 		{
 			light = changeLight(1);
 		}
-		else if ((button() == 0) && (light == 1))
-		{
-			light = changeLight(1);
-		}
-		else if ((button() == 1) && (light == 0))
-		{
-			light = changeLight(1);
-		}
-		else if ((button() == 1) && (light == 1))
+		else if ((light == 1) && (button() == 1))
 		{
 			light = changeLight(0);
 		}
