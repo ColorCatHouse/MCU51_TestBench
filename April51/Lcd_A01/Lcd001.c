@@ -133,9 +133,6 @@ void main(void)
 	lcdInit();
 
 	lcdSetInputMode(1,0);
-//	lcdWriteData('A');
-//	lcdWriteData('p');
-//	lcdWriteData('r');
 	lcdWriteString("April Sin is a good girl");
 
 	for (;;);
