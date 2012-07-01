@@ -160,10 +160,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>13</ColumnNumber>
+      <ColumnNumber>34</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>10</CurrentLine>
+      <TopLine>36</TopLine>
+      <CurrentLine>58</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\sw001.c</PathWithFileName>
       <FilenameWithoutPath>sw001.c</FilenameWithoutPath>
@@ -1515,9 +1515,9 @@
       <Documents>
         <Doc>
           <Name>.\sw001.c</Name>
-          <ColumnNumber>13</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>10</CurrentLine>
+          <ColumnNumber>34</ColumnNumber>
+          <TopLine>36</TopLine>
+          <CurrentLine>58</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>
