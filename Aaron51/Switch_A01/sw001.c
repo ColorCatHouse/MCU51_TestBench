@@ -6,34 +6,32 @@ void delay(void)
 
 	for(t=0; t<500; t++);
 }
+
 unsigned char sw(void)
 {
 	P20 = 1;
 
-	if (P20 == 0)		// Switch is ON
+	if (P20 == 0)		// Switch is On
 	{
 		return 1;
 	}
 	else
 	{
-		return 0;
+		return 0;		// Switch is Off
 	}
 } /* sw */
 
-unsigned char changeLight(unsigned char s)
+void changeLight(unsigned char s)
 {
-	if (s == 0)		// Light Off
+	if (s == 0)	 	// Light Off
+	{	
+		P00 = 1;
+	}										  
+	else
 	{
-		delay();
-		if (s == 0)
-		{	
-			P00 = 1;
-		}										  
-		else
-		{
-			P00 = 0; 	// Light On    
-		}		
-	}
+		P00 = 0; 	// Light On    
+	}		
+
 } /* changeLight */
 
 void main(void)
@@ -42,17 +40,18 @@ void main(void)
 
 	P0=~0x00;
 
-	for(;;)
+	for (;;)
 	{
-		if(sw() == 1);
+		if (sw() == 1)
 		{
-			if (light == 0);
-
-			chageLight(1);
-
-			else if (light == 1);
-
-			changeLight(0);	
+			if (light == 0)
+			{
+				changeLight(1);
+			}
+			else
+			{
+				changeLight(0);
+			}	
 		}
 	}
-}
+} /* main */ 
