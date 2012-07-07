@@ -24,19 +24,20 @@
 				将 JPBG 液晶背光跳线插上
 
  *******************************************************************************/
-#define RS 			P20
-#define RW 			P21
-#define EN 			P22
+// unsigned char lcdCheckBusy(void)
+// void lcdWaitNotBusy(void);
 
-void lcdWaitNotBusy(void);
-
-void lcdWriteCmd(unsigned char cmd);
+// void lcdWriteCmd(unsigned char cmd);
 void lcdWriteData(unsigned char dData);
 void lcdWriteString(char *str);
 
 void lcdSetInputMode(unsigned char shiftCursor, unsigned char shiftString);
 void lcdSetDisplay(unsigned char mode);
 
+// row: 0, 1
+void lcdSelectRow(unsigned char row);
+void lcdSelectRowPosition(unsigned char pos);
+void lcdSelectPosition(unsigned char row, unsigned pos);
 
 // Clear LCD Screen
 void lcdClear(void);

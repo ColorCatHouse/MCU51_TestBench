@@ -1,18 +1,18 @@
 /*******************************************************************************
- Title: 	LCD	Display Test
+ Title: 	lcd_hardware.h
  Ver:		1.0
 
- Date:			2012-07-07
- By:			April
+ Date:		2012-07-07
+ By:		April
 
- Hardware:		RichMCU RZ-51V2.0 Development Board
-				X'tal: 11.0592MHz
+ Hardware:	RichMCU RZ-51V2.0 Development Board
+			X'tal: 11.0592MHz
 
  Connection:	LCD pins as below -
  				RS - P20
 				RW - P21
 				EN - P22
-				PORT_LCD - P0
+				DATAPORT - P0
 
  Jumpers:		Remove JPSMG - Disable 7-Segment LEDs
  				Remove JPP0  - Disable LEDs
@@ -23,24 +23,8 @@
 				插上1602LCD液晶
 				将 JPBG 液晶背光跳线插上
  *******************************************************************************/
-#include <STC89.H>
-#include "lib_uty.h"
-#include "lcd_lib.h"
-
-void main(void)
-{
-	lcdInit();								// Clear Screen, Display ON, Cursor ON, Blinking ON
-											// Use 8-bit, 2 Lines, Font 5x7
-
-	lcdSetInputMode(1,0);					// Cursor INC, No Shift
-
-	lcdWriteString("April is a girl");
-
-	lcdSelectRow(1);
-	lcdWriteString("Ha! Ha!");
-
-	for (;;);
-
-} /* main */
-
-
+#define RS 			P20
+#define RW 			P21
+#define EN 			P22
+#define	BF			P07
+#define	PORT_LCD	P0

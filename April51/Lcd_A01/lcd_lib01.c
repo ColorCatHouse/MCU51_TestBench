@@ -25,6 +25,7 @@
 
  *******************************************************************************/
 #include <STC89.H>
+#include "lcd_hardware.h"
 #include "lcd_lib.h"
 #include "lib_uty.h"
 
@@ -34,11 +35,14 @@ unsigned char lcdCheckBusy(void)
 {
 	unsigned char busyFlag;
 
+	BF = 1;						// Set BF pin to high and ready for input
+	EN = 0;
+		
 	RS = 0;
 	RW = 1;
 	EN = 1;
 	delay(DELAYSHORT);
-	busyFlag = P07;
+	busyFlag = BF;
 	EN = 0;
 	RS = 1;
 
@@ -56,10 +60,11 @@ void lcdWriteCmd(unsigned char cmd)
 {
 	lcdWaitNotBusy();
 
-	RS = 0;
-	RW = 0;
 	EN = 0;
-	P0 = cmd;
+	RS = 0;				// Select Command mode
+	RW = 0;				// Set to Write
+
+	PORT_LCD = cmd;		// Send command to LCD module
 	EN = 1;
 	delay(DELAYSHORT);
 	EN = 0;
@@ -70,11 +75,12 @@ void lcdWriteCmd(unsigned char cmd)
 
 void lcdWriteData(unsigned char dData)
 {
-	P0 = 0;
 	lcdWaitNotBusy();
-	RS = 1;
-	RW = 0;
-	P0 = dData;
+
+	EN = 0;
+	RS = 1;				// Select Data mode
+	RW = 0;				// Set to Write
+	PORT_LCD = dData;	// Send data to LCD module
 	EN = 1;
 	delay(DELAYSHORT);
 	EN = 0;
@@ -131,4 +137,15 @@ void lcdInit(void)
 	lcdWriteCmd(0x38);		// Use 8-bit, 2 Lines, Font 5x7
 } /* lcdClear */ 
 
+void lcdSelectRow(unsigned char row) 	// row:0, 1
+{					
+	if (row == 0)
+	{
+		lcdWriteCmd(0x80 | 0x00);
+	}
+	else
+	{
+		lcdWriteCmd(0x80 | 0x40);
+	}
 
+} /* lcdSelectRow */
