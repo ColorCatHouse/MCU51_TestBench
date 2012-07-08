@@ -141,11 +141,34 @@ void lcdSelectRow(unsigned char row) 	// row:0, 1
 {					
 	if (row == 0)
 	{
-		lcdWriteCmd(0x80 | 0x00);
+		lcdWriteCmd(0x80 | 0x00);		// Select address 0, 1st Row
 	}
 	else
 	{
-		lcdWriteCmd(0x80 | 0x40);
+		lcdWriteCmd(0x80 | 0x40);		// Select address 0x40, 2nd Row	
 	}
 
 } /* lcdSelectRow */
+
+void lcdClearRow(unsigned char row)		// row:0, 1
+{	
+	unsigned int n;
+
+	if (row == 0)
+	{
+		for (n=0; n<40; n++)
+		{
+			lcdSelectRow(0);
+			lcdWriteCmd(0x80 | n);
+			lcdWriteData(' ');
+		}
+	}
+	else
+	{	for (n=40; n<0x80; n++)
+		{
+			lcdSelectRow(1);
+			lcdWriteCmd(0x80 | n);
+			lcdWriteData(' ');
+		}
+	}
+} /* lcdClearRow */
