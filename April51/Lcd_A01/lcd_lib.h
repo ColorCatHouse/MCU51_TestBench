@@ -27,7 +27,7 @@
 // unsigned char lcdCheckBusy(void)
 // void lcdWaitNotBusy(void);
 
-// void lcdWriteCmd(unsigned char cmd);
+void lcdWriteCmd(unsigned char cmd);
 void lcdWriteData(unsigned char dData);
 void lcdWriteString(char *str);
 
@@ -38,6 +38,9 @@ void lcdSetDisplay(unsigned char mode);
 void lcdSelectRow(unsigned char row);
 void lcdSelectRowPosition(unsigned char pos);
 void lcdSelectPosition(unsigned char row, unsigned pos);
+void lcdClearRow(unsigned char row);
+void lcdClearCurrentRow(void);
+void lcdClearRestofRow(void);
 
 // Clear LCD Screen
 void lcdClear(void);
