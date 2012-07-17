@@ -1,7 +1,7 @@
 /*******************************************************************************
  File:			lcd_lib06.c
  Title: 		LCD	Driver Library
- Ver:			3.0
+ Ver:			3.0 alpha
 
  Date:			2012-07-16
  By:			April
@@ -36,6 +36,8 @@ unsigned char lcdCurrentModeInput;
 unsigned char lcdCurrentModeDisplay;
 unsigned char lcdCurrentModeShifting;
 unsigned char lcdCurrentModeFunction;
+
+unsigned char lcdCurrentRow;
 
 unsigned char lcdCheckBusy(void)
 {
@@ -93,6 +95,20 @@ void lcdWriteData(unsigned char dData)
 	RW = 1;
 
 } /* lcdWriteData */
+
+void lcdReadData(unsigned char dData)
+{
+	lcdWaitNotBusy();
+
+	EN = 0;
+	RS = 1;
+	RW = 1;
+	PORT_LCD = dData;
+	EN = 1;
+	delay(DELAYSHORT);
+	EN = 0;
+
+} /* lcdReadData */
 
 void lcdWriteString(char *str)
 {
@@ -192,8 +208,6 @@ void lcdSetDisplayCursorBlinkOff(void)
 
 } /* lcdSetDisplayCursorBlinkOff */
 
-
-
 void lcdModeShiftMsg(void)
 {
 	lcdCurrentModeShifting |= LCD_MODE_SHIFT_MSG;
@@ -277,19 +291,20 @@ void lcdModeFunctionFont5X7(void)
 
 void lcdSetShifting(unsigned char mode)
 {
-		lcdWriteCmd(0x10 | mode);
+	lcdWriteCmd(0x10 | mode);
 
 } /* lcdSetShifting */
 
 void lcdSetFunction(unsigned char mode)	
 {
-		lcdWriteCmd(0x20 | mode);
+	lcdWriteCmd(0x20 | mode);
 
 } /* lcdSetFunction */
 
 void lcdClear(void)
 {
 	lcdWriteCmd(1);		  	// Clear LCD Screen, AC=0
+
 } /* lcdClear */ 
 
 void lcdInit(void)
@@ -318,7 +333,21 @@ void lcdSelectRow(unsigned char row) 	// row:0, 1
 
 } /* lcdSelectRow */
 
-void lcdClearRow(unsigned char row)		// row:0, 1
+void lcdSelectRowPosition(unsigned char row, unsigned char pos)
+{
+	lcdSelectRow(row);
+	lcdWriteCmd(0x80 | pos);
+
+} /* lcdSelectRowPosition */
+
+void lcdSelectDDRAMAddr(unsigned addr)
+{
+	lcdWriteCmd(0x80 | addr);		    	//Select address addr
+
+} /* lcdSelectDDRAMAddr */
+
+											
+void lcdClearRow(unsigned char row)			// row:0, 1
 {	
 	unsigned int n;
 
@@ -333,3 +362,40 @@ void lcdClearRow(unsigned char row)		// row:0, 1
 	lcdSelectRow(row);						// CR: Move cursor to beginning of line [Carriage Return]					
 
 } /* lcdClearRow */
+
+void lcdClearCurrentRow(void)
+{
+	lcdCurrentRow = 
+	lcdClearRow(lcdCurrentRow);
+	
+} /* lcdClearCurrentRow */
+
+void lcdClearRestOfRow(unsigned char row)
+{
+	unsigned char n;
+
+   	lcdSelectRow(row);
+	
+	for(n=dData; n!=0; n++)
+	{
+		lcdSelectPosition(n);
+		lcdClearPosition();
+	}
+} /* lcdClearRestofRow */
+
+void lcdClearRestOfCurrentRow(void)
+{
+	unsigned char n;
+
+	lcdCurrentRow = 
+	lcdSelectRow(lcdCurrentRow);
+
+	for(n=dData; n!=0; n++)
+	{
+		lcdClearPosition(n);
+	}
+} /* lcdClearRestofCurrentRow */
+
+
+
+

@@ -32,8 +32,8 @@
 #define		LCD_MODE_DISPLAY_CURSOR_ON			0x02
 #define 	LCD_MODE_DISPLAY_CURSOR_BLINK_ON	0x01
 
-#define		LCD_MODE_SHIFT_MSG					0x18
-#define		LCD_MODE_SHIFT_RIGHT				0x14
+#define		LCD_MODE_SHIFT_MSG					0x08
+#define		LCD_MODE_SHIFT_RIGHT				0x04
 
 #define		LCD_MODE_FUNCTION_DL8				0x10
 #define		LCD_MODE_FUNCTION_2LINES			0x08
@@ -63,12 +63,12 @@ void lcdSetFunction(unsigned char mode);
 
 // row: 0, 1
 void lcdSelectRow(unsigned char row);
-void lcdSelectRowPosition(unsigned char pos);
-void lcdSelectPosition(unsigned char row, unsigned pos);
+void lcdSelectRowPosition(unsigned char row, unsigned char pos);
+void lcdSelectPosition(unsigned char pos);
 void lcdClearRow(unsigned char row);
 void lcdClearCurrentRow(void);
-void lcdClearRestofRow(void);
-void lcdClearRestofCurrentRow(void);
+void lcdClearRestOfRow(unsigned char row);
+void lcdClearRestOfCurrentRow(void);
 
 /*******************************************************
  lcdInit()
