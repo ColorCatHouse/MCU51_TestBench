@@ -1,9 +1,9 @@
 /*******************************************************************************
  File:			lcd_lib06.c
  Title: 		LCD	Driver Library
- Ver:			3.0 alpha
+ Version:		3.0 alpha
 
- Date:			2012-07-16
+ Date:			2012-07-17
  By:			April
 
  Hardware:		RichMCU RZ-51V2.0 Development Board
