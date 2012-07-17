@@ -37,13 +37,13 @@ void main (void)
 
 	lcdSetInput(LCD_MODE_INPUT_INC |
 				LCD_MODE_INPUT_SHIFT_OFF);
-	
+		
 	for (;;)
 	{
 		for(n=0; n<0xf; n++)
 		{
-			lcdClearRow(0);
-			lcdWriteCmd(0x80 | n);
+			lcdClearRow(1);
+			lcdWriteCmd(0x80 | 0x40 | n);
 
 			lcdWriteString("April");
 			delay(10000);

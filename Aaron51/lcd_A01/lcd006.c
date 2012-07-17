@@ -2,7 +2,7 @@
  File:			lcd006.c
 
  Title: 		LCD	Display Test
- Ver:			2.0
+ Ver:			3.0	Alpha
 
  Date:			2012-07-14
  By:			Aaron

@@ -2,7 +2,7 @@
  File:			lcd_lib006.c
 
  Title: 		LCD	Driver Library
- Ver:			2.0
+ Ver:			3.0	Alpha
 
  Date:			2012-07-14
  By:			Aaron
@@ -261,3 +261,21 @@ void lcdClearRow(unsigned char row)		// row:0, 1
 	lcdSelectRow(row);						// CR: Move cursor to beginning of line [Carriage Return]					
 
 } /* lcdClearRow */
+void lcdSelectRowPosition(unsigned char row, unsigned char pos)
+{											 
+	lcdSelectRow(row);
+	lcdWriteCmd(0x80 | pos);
+
+} /* lcdSelectRowPosition */
+
+void lcdClearCurrentRow(void)
+{
+} /* lcdClearCurrentRow */
+
+void lcdClearRestOfRow(unsigned char row)
+{
+} /* lcdClearRestOfRow */ 
+
+void lcdClearRestOfCurrentRow(void)
+{
+} /* lcdClearRestOfCurrentRow */

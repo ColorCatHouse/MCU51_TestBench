@@ -2,7 +2,7 @@
  File:			lcd_lib06.h
 
  Title: 		LCD Driver library
- Ver:			2.0
+ Ver:			3.0	Alpha
 
  Date:			2012-07-14
  By:			Aaron
@@ -72,8 +72,8 @@ void lcdSetFunction(unsigned char mode);
 
 // row: 0, 1
 void lcdSelectRow(unsigned char row);
-void lcdSelectRowPosition(unsigned char pos);
-void lcdSelectPosition(unsigned char row, unsigned pos);
+void lcdSelectRowPosition(unsigned char row, unsigned char pos);
+void lcdSelectPosition(unsigned char pos);
 void lcdClearRow(unsigned char row);
 void lcdClearCurrentRow(void);
 void lcdClearRestofRow(void);
