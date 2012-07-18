@@ -374,6 +374,9 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>Headers</GroupName>
+        </Group>
       </Groups>
     </Target>
   </Targets>

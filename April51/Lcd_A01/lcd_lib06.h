@@ -42,14 +42,30 @@
 // unsigned char lcdCheckBusy(void)
 // void lcdWaitNotBusy(void);
 
-void lcdWriteCmd(unsigned char cmd);
+//void lcdWriteCmd(unsigned char cmd);
 void lcdWriteData(unsigned char dData);
 void lcdWriteString(char *str);
 
+//addr: 0x00 - 0x27, 0x40 - 0x67
+void lcdSelectDDRAMaddr(unsigned char addr);
+void lcdSelectCGRAMaddr(unsigned char addr);
+
+unsigned char lcdGetCursorPos(void);
+void lcdPutCharAtPos(unsigned char row, unsigned char pos, char c);
+
 // Clear LCD Screen
 void lcdClear(void);
-
 void lcdCursorReset(void);
+
+void lcdClearRow(unsigned char row);
+void lcdClearCurrentRow(void);
+void lcdClearRestOfRow(unsigned char row);
+void lcdClearRestOfCurrentRow(void);
+
+// row: 0, 1
+void lcdSelectRow(unsigned char row);
+void lcdSelectRowPosition(unsigned char row, unsigned char pos);
+void lcdSelectPosition(unsigned char pos);
 
 void lcdSetInput(unsigned char mode);
 void lcdSetInputInc(void);
@@ -58,17 +74,23 @@ void lcdSetInputShiftOn(void);
 void lcdSetInputShiftOff(void);
 
 void lcdSetDisplay(unsigned char mode);
+void lcdSetDisplayOn(void);
+void lcdSetDisplayOff(void);
+void lcdSetDisplayOn(void);
+void lcdSetDisplayOff(void);
+void lcdSetDisplayOn(void);
+void lcdSetDisplayOff(void);
+
+
 void lcdSetShifting(unsigned char mode);
+void lcdSetShifting(unsigned char mode);
+void lcdSetShifting(unsigned char mode);
+
+void lcdSetFunction(unsigned char mode);
+void lcdSetFunction(unsigned char mode);
 void lcdSetFunction(unsigned char mode);
 
-// row: 0, 1
-void lcdSelectRow(unsigned char row);
-void lcdSelectRowPosition(unsigned char row, unsigned char pos);
-void lcdSelectPosition(unsigned char pos);
-void lcdClearRow(unsigned char row);
-void lcdClearCurrentRow(void);
-void lcdClearRestOfRow(unsigned char row);
-void lcdClearRestOfCurrentRow(void);
+
 
 /*******************************************************
  lcdInit()
