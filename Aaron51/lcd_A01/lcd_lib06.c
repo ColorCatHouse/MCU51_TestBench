@@ -96,7 +96,7 @@ void lcdWriteData(unsigned char dData)
 } /* lcdWriteData */
 
 void lcdWriteString(char *str)
-{
+{				  
 	char *s;
 
 	for(s=str; *s!= 0; s++)
@@ -104,6 +104,15 @@ void lcdWriteString(char *str)
 		lcdWriteData(*s);
 	}
 } /* lcdWriteString */
+
+unsigned char lcdSelectDDRAMddr(unsigned addr)
+{
+	
+} /* lcdSelectDDRAMddr */
+
+unsigned char lcdSelectCGRAMddr(unsigned addr)
+{
+} /* lcdSelsectCGRAMddr */
 	
 void lcdSetInput(unsigned char mode)
 {

@@ -2,7 +2,7 @@
 Title:		LCD Test
 
 Ver:		1.0
-Data:		2012-7-17
+Data:		2012-7-18
 By:			Aaron
 
 Hardware:	RichMCU RZ-51V2.0 Development Board
@@ -97,17 +97,6 @@ void main(void)
 	lcdWriteCMD(0xF);						// Display On, Cursor On, Blink On
 
 	lcdWriteCMD(0x80 | 0x00);				// Select 2nd row
-	lcdWriteCMD(0x6);						// Input INC, Shift Off
-						   
-	lcdWriteData('A');
-	lcdWriteData('a');
-	lcdWriteData('r');
-	lcdWriteData('o');
-	lcdWriteData('n');
-
-
-
-	lcdWriteCMD(0x80 | 0x40);				// Select 2nd row
 	lcdWriteCMD(0x6);						// Input INC, Shift Off
 						   
 	lcdWriteData('A');

@@ -48,11 +48,23 @@
 
 // unsigned char lcdCheckBusy(void)
 // void lcdWaitNotBusy(void);
+//void lcdWriteCmd(unsigned char cmd);
 
-void lcdWriteCmd(unsigned char cmd);
 void lcdWriteData(unsigned char dData);
 void lcdWriteString(char *str);
 
+//addr : 0x00 - 0x27, 0x40 - 0x67
+unsigned char lcdSelectDDRAMddr(unsigned addr);		//Addr : 00H-27H, 40H-67H
+unsigned char lcdSelectCGRAMddr(unsigned addr);		//Addr : 00H-3FH	
+
+v
+unsigned char lcdGetCursorPos(void);				//Return row : 0-1
+unsigned char lcdGetCurrentRow(void);				//Return position : 0-39
+unsigned char lcdGetCurrentAddress(void);			//Rtn addr : 00H-27H, 40H-67H
+
+// row : 0 - 1, pos : 0 - 39
+void lcdPutCharAtPos(unsigned char row, unsigned char pos, char c);
+						
 void lcdSetInput(unsigned char mode);
 void lcdSetInputInc(void);
 void lcdSetInputDec(void);
@@ -70,7 +82,13 @@ void lcdSetDisplayCursorBlinkOff(void);
 void lcdSetShifting(unsigned char mode);
 void lcdSetFunction(unsigned char mode);
 
-// row: 0, 1
+// row: 0, 1																																																																																																																																																																																																																																																																																																																																																																																																															   do
+{
+	// TODO: enter the block content here
+
+}
+while();
+
 void lcdSelectRow(unsigned char row);
 void lcdSelectRowPosition(unsigned char row, unsigned char pos);
 void lcdSelectPosition(unsigned char pos);

@@ -376,6 +376,23 @@
         </Group>
         <Group>
           <GroupName>Headers</GroupName>
+          <Files>
+            <File>
+              <FileName>lcd_lib06.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lcd_lib06.h</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_hardware.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lcd_hardware.h</FilePath>
+            </File>
+            <File>
+              <FileName>lib_uty.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lib_uty.h</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>
