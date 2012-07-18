@@ -1,5 +1,5 @@
 /****************************************************************************
- File:			lcd001.c
+ File:			lcd_main001.c
 
  LCD Demo
 
@@ -28,6 +28,9 @@
 ****************************************************************************/
 #include "lib_uty001.h"
 #include "lcd_lib001.h"
+
+#define	LCD_ANIMA_CHAR
+#define	LCD_FLIP_ROW
 
 #define	DEBUG_USRCHAR
 #undef	DEBUG_USRCHAR
@@ -96,6 +99,11 @@ void main(void)
 {
 	for (;;)
 	{
+#ifdef	LCD_DEM01
 		lcdDemoAnimatedChar();
+#endif
+
+#ifdef	LCD_DEMO2
+#endif
 	}
 } /* main */
