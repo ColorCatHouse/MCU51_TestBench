@@ -1,9 +1,9 @@
 /*******************************************************************************
  File: 			lcd_lib06.h
  Title:			LCD Driver Library Header
- Ver:			3.0
+ Ver:			3.0	alpha
 
- Date:			2012-07-16
+ Date:			2012-07-18
  By:			April
 
  Hardware:		RichMCU RZ-51V2.0 Development Board
@@ -39,6 +39,7 @@
 #define		LCD_MODE_FUNCTION_2LINES			0x08
 #define		LCD_MODE_FUNCTION_FONT5X10			0x04
 
+
 // unsigned char lcdCheckBusy(void)
 // void lcdWaitNotBusy(void);
 
@@ -46,23 +47,24 @@
 void lcdWriteData(unsigned char dData);
 void lcdWriteString(char *str);
 
-//addr: 0x00 - 0x27, 0x40 - 0x67
-void lcdSelectDDRAMaddr(unsigned char addr);
-void lcdSelectCGRAMaddr(unsigned char addr);
+unsigned char lcdSelectDDRAMaddr(unsigned char addr);  	//Return True/False
+unsigned char lcdSelectCGRAMaddr(unsigned char addr);  	//Return True/False
 
-unsigned char lcdGetCursorPos(void);
+unsigned char lcdGetCurrentRow(void);					
+unsigned char lcdGetCursorPos(void);					
+unsigned char lcdGetCursorAddr(void);					
+
 void lcdPutCharAtPos(unsigned char row, unsigned char pos, char c);
 
 // Clear LCD Screen
 void lcdClear(void);
-void lcdCursorReset(void);
-
 void lcdClearRow(unsigned char row);
 void lcdClearCurrentRow(void);
 void lcdClearRestOfRow(unsigned char row);
 void lcdClearRestOfCurrentRow(void);
 
-// row: 0, 1
+void lcdCursorReset(void);
+
 void lcdSelectRow(unsigned char row);
 void lcdSelectRowPosition(unsigned char row, unsigned char pos);
 void lcdSelectPosition(unsigned char pos);
@@ -77,20 +79,23 @@ void lcdSetDisplay(unsigned char mode);
 void lcdSetDisplayOn(void);
 void lcdSetDisplayOff(void);
 void lcdSetDisplayOn(void);
-void lcdSetDisplayOff(void);
-void lcdSetDisplayOn(void);
-void lcdSetDisplayOff(void);
+void lcdSetDisplayCursorOff(void);
+void lcdSetDisplayCursorBlinkOn(void);
+void lcdSetDisplayCursorBlinkOff(void);
 
 
 void lcdSetShifting(unsigned char mode);
-void lcdSetShifting(unsigned char mode);
-void lcdSetShifting(unsigned char mode);
-
-void lcdSetFunction(unsigned char mode);
-void lcdSetFunction(unsigned char mode);
-void lcdSetFunction(unsigned char mode);
+void lcdSetShiftingMsg(void);
+void lcdSetShiftingCurosr(void);
+void lcdSetShiftingRight(void);
+void lcdSetShiftingLeft(void);
 
 
+void lcdSetFunction(unsigned char mode);
+void lcdSetFunction2Lines(void);
+void lcdSetFunction1Line(void);
+void lcdSetFunctionFont5X10(void);
+void lcdSetFunctionFont5X7(void);
 
 /*******************************************************
  lcdInit()

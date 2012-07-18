@@ -3,7 +3,7 @@
  Title: 		LCD	Driver Library
  Version:		3.0 alpha
 
- Date:			2012-07-17
+ Date:			2012-07-18
  By:			April
 
  Hardware:		RichMCU RZ-51V2.0 Development Board
@@ -95,20 +95,6 @@ void lcdWriteData(unsigned char dData)
 	RW = 1;
 
 } /* lcdWriteData */
-
-void lcdReadData(unsigned char dData)
-{
-	lcdWaitNotBusy();
-
-	EN = 0;
-	RS = 1;
-	RW = 1;
-	PORT_LCD = dData;
-	EN = 1;
-	delay(DELAYSHORT);
-	EN = 0;
-
-} /* lcdReadData */
 
 void lcdWriteString(char *str)
 {
@@ -340,12 +326,48 @@ void lcdSelectRowPosition(unsigned char row, unsigned char pos)
 
 } /* lcdSelectRowPosition */
 
-void lcdSelectDDRAMAddr(unsigned addr)
+unsigned char lcdSelectDDRAMAddr(unsigned addr)
 {
+	unsigned char status=0;
+
+	if((addr >= 0) && (addr <= 0x27)	| (addr >= 0x40) && (addr <= 0x67))
+	{
+		status = 1;
+	}
+	
 	lcdWriteCmd(0x80 | addr);		    	//Select address addr
+
+	return status;
 
 } /* lcdSelectDDRAMAddr */
 
+unsigned char lcdSelectCGRAMAddr(unsigned addr)
+{
+	unsigned char status=0;
+
+	if((addr >= 0) && (addr <= 0x27)	| (addr >= 0x40) && (addr <= 0x67))
+	{
+		status = 1;
+	}
+	
+	lcdWriteCmd(0x40 | addr);		    	//Select address addr
+
+	return status;
+
+} /* lcdSelectCGRAMAddr */
+
+unsigned char lcdGetCursorPos(void)
+{
+	unsigned char pos;
+	
+			
+}
+
+void lcdPutCharAtPos(unsigned char row, unsigned char pos, char c)
+{
+	lcdSelectRowPosition(row, pos);
+	lcdWriteData(c);
+}
 											
 void lcdClearRow(unsigned char row)			// row:0, 1
 {	
@@ -365,7 +387,6 @@ void lcdClearRow(unsigned char row)			// row:0, 1
 
 void lcdClearCurrentRow(void)
 {
-	lcdCurrentRow = 
 	lcdClearRow(lcdCurrentRow);
 	
 } /* lcdClearCurrentRow */
@@ -373,29 +394,34 @@ void lcdClearCurrentRow(void)
 void lcdClearRestOfRow(unsigned char row)
 {
 	unsigned char n;
+	unsigned char p;
 
-   	lcdSelectRow(row);
-	
-	for(n=dData; n!=0; n++)
+	p=lcdGetCursorPos;
+	lcdSelectRow(row);
+
+	if(row==1)
 	{
-		lcdSelectPosition(n);
-		lcdClearPosition();
+		for(n=p; n<0x27; n++) 
+		{
+			lcdPutCharAtPos(row, n, ' ');
+		}
 	}
+	else
+	{
+		for(n=p; n<0x40; n++)
+		{
+			lcdPutCharAtPos(row, n, ' ');
+		}
+	}
+
 } /* lcdClearRestofRow */
 
 void lcdClearRestOfCurrentRow(void)
 {
 	unsigned char n;
-
-	lcdCurrentRow = 
-	lcdSelectRow(lcdCurrentRow);
-
-	for(n=dData; n!=0; n++)
-	{
-		lcdClearPosition(n);
-	}
+ 	unsigned char p;
+  	
 } /* lcdClearRestofCurrentRow */
-
 
 
 
