@@ -1,9 +1,9 @@
 /*******************************************************************************
- Title: 	LCD	Driver Library
- Ver:		1.0
+ Title: 		LCD	Driver Library
+ Ver:			2.0
 
- Date:		2012-07-07
- By:		April
+ Date:			2012-07-14
+ By:			Michael
 
  Hardware:		RichMCU RZ-51V2.0 Development Board
 				X'tal: 11.0592MHz
@@ -26,7 +26,7 @@
  *******************************************************************************/
 #include <STC89.H>
 #include "lcd_hardware.h"
-#include "lcd_lib.h"
+#include "lcd_lib05.h"
 #include "lib_uty.h"
 
 #define DELAYSHORT	10
@@ -98,32 +98,29 @@ void lcdWriteString(char *str)
 	}
 } /* lcdWriteString */
 
-// shiftCursor-> I/D -> 1:Inc, 0:Dec
-// shiftString-> S   -> 1:Shift ON, 0:Shift Off	
-void lcdSetInputMode(unsigned char shiftCursor, unsigned char shiftString)
+void lcdSetInput(unsigned char mode)
 {
-	unsigned char mode;
-	unsigned char cmd;
+	lcdWriteCmd(0x04 | mode);
 
-	mode = (shiftCursor << 1)|(shiftString);
-	cmd = 0x04|mode;
+} /* lcdSetInput */
 
-	lcdWriteCmd(cmd);
-
-} /* lcdSetInputMode */
-
-void lcdSetDisplay(unsigned char mode)		// 1:Display ON, Cursor ON, Blinking ON
+void lcdSetDisplay(unsigned char mode)
 {
-	if (mode == 0) 							// 0: Display OFF
-	{
-		lcdWriteCmd(0x80);
-	}
-	else
-	{
-		lcdWriteCmd(0x0f);				 	// DISPLAY ON, Cursor ON, Blinking ON
-	}
+	lcdWriteCmd(0x08 | mode);
 
 } /* lcdSetDisplay */
+
+void lcdSetShifting(unsigned char mode)
+{
+	lcdWriteCmd(0x10 | mode);
+
+} /* lcdSetShifting */
+
+void lcdSetFunction(unsigned char mode)
+{
+	lcdWriteCmd(0x20 | mode);
+
+} /* lcdSetFuncction */
 
 void lcdClear(void)
 {
@@ -133,8 +130,15 @@ void lcdClear(void)
 void lcdInit(void)
 {
 	lcdClear();				// Clear LCD Screen
-	lcdSetDisplay(1);		// Display ON, Cursor ON, Blinking ON
-	lcdWriteCmd(0x38);		// Use 8-bit, 2 Lines, Font 5x7
+
+	lcdSetFunction(LCD_MODE_FUNCTION_DL8     |
+				   LCD_MODE_FUNCTION_2LINES  |
+				   LCD_MODE_FUNCTION_FONT5X7);
+
+	lcdSetDisplay(LCD_MODE_DISPLAY_ON              |
+				  LCD_MODE_DISPLAY_CURSOR_ON       |
+				  LCD_MODE_DISPLAY_CURSOR_BLINK_ON);
+
 } /* lcdClear */ 
 
 void lcdSelectRow(unsigned char row) 	// row:0, 1

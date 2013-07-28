@@ -26,27 +26,23 @@
  *******************************************************************************/
 #include <STC89.H>
 #include "lib_uty.h"
-#include "lcd_lib.h"
+#include "lcd_lib05.h"
 
 void main (void)
 {
-	unsigned char n;
-
 	lcdInit();							// Clear Screen, Display ON, Cursor ON, Blinking ON
 										// Use 8-bit, 2 Lines, Font 5x7
 
-	lcdSetInputMode(1,0);				// Cursor INC, No Shift
+	lcdSetInput(LCD_MODE_INPUT_INC		 |
+				LCD_MODE_INPUT_SHIFT_OFF);
 	
 	for (;;)
 	{
-		for(n=0; n<0xf; n++)
-		{
-			lcdClearRow(0);
-			lcdWriteCmd(0x80 | n);
+		lcdClearRow(0);
+		delay(30000);
 
-			lcdWriteString("April");
-			delay(10000);
-		}
+		lcdWriteString("I am LCD");
+		delay(30000);
 	}
 
 } /* main */

@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>lcd_pj04.zzz</OutputName>
+          <OutputName>lcd_pj05.zzz</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -348,9 +348,9 @@
           <GroupName>LCD Library</GroupName>
           <Files>
             <File>
-              <FileName>lcd_lib01.c</FileName>
+              <FileName>lcd_lib05.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd_lib01.c</FilePath>
+              <FilePath>.\lcd_lib05.c</FilePath>
             </File>
           </Files>
         </Group>
