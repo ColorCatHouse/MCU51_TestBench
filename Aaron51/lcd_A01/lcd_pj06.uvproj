@@ -213,7 +213,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <Size>0x10000</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -347,9 +347,9 @@
           <GroupName>LCD Library</GroupName>
           <Files>
             <File>
-              <FileName>lcd_lib05.c</FileName>
+              <FileName>lcd_lib06.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd_lib05.c</FilePath>
+              <FilePath>.\lcd_lib06.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -367,9 +367,9 @@
           <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>lcd005.c</FileName>
+              <FileName>lcd006.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd005.c</FilePath>
+              <FilePath>.\lcd006.c</FilePath>
             </File>
           </Files>
         </Group>

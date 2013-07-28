@@ -1,6 +1,8 @@
 /*******************************************************************************
+ File:			lcd006.c
+
  Title: 		LCD	Display Test
- Ver:			2.0
+ Ver:			3.0	Alpha
 
  Date:			2012-07-14
  By:			Aaron
@@ -26,7 +28,7 @@
  *******************************************************************************/
 #include <STC89.H>
 #include "lib_uty.h"
-#include "lcd_lib05.h"
+#include "lcd_lib06.h"
 
 void main (void)
 {
@@ -35,15 +37,14 @@ void main (void)
 	lcdInit();							// Clear Screen, Display ON, Cursor ON, Blinking ON
 										// Use 8-bit, 2 Lines, Font 5x7
 
-	lcdSetInput(LCD_MODE_INPUT_INC |
-				LCD_MODE_INPUT_SHIFT_OFF);
-		
+	lcdSetInput(LCD_INPUT_INC);			// Input mode: INC, No Shift
+	
 	for (;;)
 	{
 		for(n=0; n<0xf; n++)
 		{
-			lcdClearRow(1);
-			lcdWriteCmd(0x80 | 0x40 | n);
+			lcdClearRow(0);
+			lcdWriteCmd(0x80 | n);
 
 			lcdWriteString("April");
 			delay(10000);

@@ -43,7 +43,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>lcd_pj05.zzz</OutputName>
+          <OutputName>lcd_pj01.zzz</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -213,7 +213,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <Size>0xffff</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -344,12 +344,12 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>LCD Library</GroupName>
+          <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>lcd_lib05.c</FileName>
+              <FileName>lcd_main001.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd_lib05.c</FilePath>
+              <FilePath>.\lcd_main001.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -357,19 +357,44 @@
           <GroupName>Utility</GroupName>
           <Files>
             <File>
-              <FileName>lib_uty.c</FileName>
+              <FileName>lib_uty001.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lib_uty.c</FilePath>
+              <FilePath>.\lib_uty001.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>Application</GroupName>
+          <GroupName>LCD Library</GroupName>
           <Files>
             <File>
-              <FileName>lcd005.c</FileName>
+              <FileName>lcd_lib001.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd005.c</FilePath>
+              <FilePath>.\lcd_lib001.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Header Files</GroupName>
+          <Files>
+            <File>
+              <FileName>lcd_lib001.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lcd_lib001.h</FilePath>
+            </File>
+            <File>
+              <FileName>hw_rz51v2.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hw_rz51v2.h</FilePath>
+            </File>
+            <File>
+              <FileName>hw_lcd1602.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hw_lcd1602.h</FilePath>
+            </File>
+            <File>
+              <FileName>lib_uty001.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lib_uty001.h</FilePath>
             </File>
           </Files>
         </Group>

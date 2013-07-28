@@ -1,9 +1,10 @@
 /*******************************************************************************
+ File:			lcd006.c
  Title: 		LCD	Display Test
  Ver:			2.0
 
  Date:			2012-07-14
- By:			Aaron
+ By:			April
 
  Hardware:		RichMCU RZ-51V2.0 Development Board
 				X'tal: 11.0592MHz
@@ -26,28 +27,22 @@
  *******************************************************************************/
 #include <STC89.H>
 #include "lib_uty.h"
-#include "lcd_lib05.h"
+#include "lcd_lib06.h"
 
 void main (void)
 {
-	unsigned char n;
 
 	lcdInit();							// Clear Screen, Display ON, Cursor ON, Blinking ON
 										// Use 8-bit, 2 Lines, Font 5x7
 
-	lcdSetInput(LCD_MODE_INPUT_INC |
-				LCD_MODE_INPUT_SHIFT_OFF);
-		
+	lcdSetInput(LCD_MODE_INPUT_INC);
+
 	for (;;)
 	{
-		for(n=0; n<0xf; n++)
-		{
-			lcdClearRow(1);
-			lcdWriteCmd(0x80 | 0x40 | n);
+		lcdClearRow(0);
+		delay(30000);
 
-			lcdWriteString("April");
-			delay(10000);
-		}
+		lcdWriteString("Hi! I'm LCD ^.^");
+		delay(30000);
 	}
-
 } /* main */

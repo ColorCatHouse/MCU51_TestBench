@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_proj.xsd">
 
-  <SchemaVersion>1.0</SchemaVersion>
+  <SchemaVersion>1.1</SchemaVersion>
 
   <Header>### uVision Project, (C) Keil Software</Header>
 
@@ -29,6 +29,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
+          <SFDFile></SFDFile>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
           <IncludePath></IncludePath>
@@ -43,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>lcd_pj05.zzz</OutputName>
+          <OutputName>lcd_pj06.zzz</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -347,9 +348,9 @@
           <GroupName>LCD Library</GroupName>
           <Files>
             <File>
-              <FileName>lcd_lib05.c</FileName>
+              <FileName>lcd_lib06.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd_lib05.c</FilePath>
+              <FilePath>.\lcd_lib06.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -367,9 +368,29 @@
           <GroupName>Application</GroupName>
           <Files>
             <File>
-              <FileName>lcd005.c</FileName>
+              <FileName>lcd006.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lcd005.c</FilePath>
+              <FilePath>.\lcd006.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Headers</GroupName>
+          <Files>
+            <File>
+              <FileName>lcd_lib06.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lcd_lib06.h</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_hardware.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lcd_hardware.h</FilePath>
+            </File>
+            <File>
+              <FileName>lib_uty.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lib_uty.h</FilePath>
             </File>
           </Files>
         </Group>
