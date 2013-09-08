@@ -54,7 +54,7 @@ void main()
 	ET0 = 1; 			//Enable Timer0 Interrupt
 	EA  = 1;			//Enable all interrupts
 
-	P1 = 0x55;			/All LEDs ON
+	P1 = 0x55;			//All LEDs ON
 
 	TR0 = 1;			//Start Timer0
 
@@ -95,7 +95,7 @@ void isrTimer0(void) interrupt 1 using 2
 	if(isrTimer0Cnt >= 10)
 	{
 		P1 = ~P1;
-		isrTimerCnt=0;
+		isrTimer0Cnt=0;
 	}
 
  	TR0 = 0;		//Disable Timer0
